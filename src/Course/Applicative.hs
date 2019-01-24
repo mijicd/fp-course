@@ -316,7 +316,7 @@ replicateA n fa = sequence $ replicate n fa
 --
 filtering :: Applicative f => (a -> f Bool) -> List a -> f (List a)
 filtering p as = foldRight (\a fas -> lift2 (f a) (p a) fas) (pure Nil) as
-  where f a b as = if b then a :. as else as
+  where f a b as' = if b then a :. as' else as'
 
 -----------------------
 -- SUPPORT LIBRARIES --
