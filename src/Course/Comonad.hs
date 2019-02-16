@@ -35,9 +35,9 @@ instance Comonad ExactlyOne where
 --
 -- >>> (+10) <$> ExactlyOne 7
 -- ExactlyOne 17
-(<$>) ::
+(<$$>) ::
   Comonad f =>
   (a -> b)
   -> f a
   -> f b
-(<$>) f fa = f . copure <<= fa
+(<$$>) f fa = f . copure <<= fa
