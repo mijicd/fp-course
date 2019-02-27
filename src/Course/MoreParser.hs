@@ -203,7 +203,7 @@ between begin end mid =
 -- >>> isErrorResult (parse (betweenCharTok '[' ']' character) "abc]")
 -- True
 betweenCharTok :: Char -> Char -> Parser a -> Parser a
-betweenCharTok c1 c2 = between (is c1) (is c2)
+betweenCharTok c1 c2 = between (charTok c1) (is c2)
 
 -- | Write a function that parses 4 hex digits and return the character value.
 --
