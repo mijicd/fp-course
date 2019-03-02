@@ -25,20 +25,12 @@ Functions that might help
 
 -}
 
-
 -- Return all anagrams of the given string
 -- that appear in the given dictionary file.
-anagrams ::
-  Chars
-  -> FilePath
-  -> IO (List Chars)
-anagrams =
-  error "todo: Course.Anagrams#anagrams"
+anagrams :: Chars -> FilePath -> IO (List Chars)
+anagrams str file =
+  intersectBy equalIgnoringCase (permutations str) . lines <$> readFile file
 
 -- Compare two strings for equality, ignoring case
-equalIgnoringCase ::
-  Chars
-  -> Chars
-  -> Bool
-equalIgnoringCase =
-  error "todo: Course.Anagrams#equalIgnoringCase"
+equalIgnoringCase :: Chars -> Chars -> Bool
+equalIgnoringCase = on (==) (toLower <$>)
